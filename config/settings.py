@@ -3,6 +3,8 @@
 from pathlib import Path
 import environ
 
+import dj_database_url
+
 
 env = environ.Env()
 environ.Env.read_env()
@@ -21,6 +23,11 @@ DEBUG = env("DEBUG") == 'True'
 
 ALLOWED_HOSTS = ["*"]
 
+# RENDER DATABASE SERVER 
+DATABASES = {
+    'default': dj_database_url.parse(env("DATABASE_URL"))
+}
+# END RENDER DATABASE SERVER
 
 # Application definition
 
